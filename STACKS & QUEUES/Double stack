@@ -1,0 +1,107 @@
+//daoble stack using single array
+#include<stdio.h>
+#define max 10
+int top1,top2;
+//push1 function
+void push1(int stack[max],int x)
+{
+	if (top1+1==top2)
+	    printf("\n stack is overflow ");
+	else
+	{
+		 top1=top1+1;
+		 stack[top1]=x;
+	  }  
+}
+
+//push2 function
+void push2( int stack[max],int x)
+{
+	 if (top1+1==top2)
+	    printf(" stack is full");
+	 else
+	 {
+	 	top2=top2-1;
+	 	stack[top2]=x;
+	 	
+	}   
+}
+//pop1 function
+int pop1(int stack[max])
+{
+	 int x;
+	 if(top1==-1)
+	      printf(" stack is underflow or empty");
+	 else
+	 {
+	 	x=stack[top1];
+	 	top1--;
+	 	printf(" deleted item %d",x);
+	}      
+}
+//pop2 function
+int pop2( int stack[max])
+{
+	int x;
+	if(top2==max)
+	    printf(" stack is underflow");
+	else
+	{
+		x=stack[top2];
+		top2++;
+		printf(" deleted item %d\n",x);
+		}    
+}
+//display function
+void display( int stack[max])
+{
+	 int i;
+	 printf(" stack 1 elements are\n");
+	 for(i=top1;i>=0;i--)
+	     printf("%d\n",stack[i]);
+	 printf(" stack 2 elements are\n");
+	 for(i=top2;i<=max-1;i++)
+	     printf("%d\n",stack[i]);	    
+}
+
+void main()
+{
+	 
+	int ch ,stack[max],x;
+	top1=-1;top2=max;
+	do
+	{
+	
+	  printf("push1. 1 ,push2. 2, pop1. 3 ,pop2. 4 ,exit. 5\n");
+	  printf(" enter the choice: \n");
+	  scanf("%d",&ch);
+	  switch(ch)
+	  {
+	  	 case 1:printf(" \nenter the elements to insert in stack1");
+	  	        scanf("%d",&x);
+	  	        push1(stack,x);
+	  	        display(stack);
+	  	        break;
+	  	        
+	  	 case 2:printf(" \n enter the elements to insert in stack1");
+	  	        scanf("%d",&x);
+	  	        push2(stack,x);  
+	  	        display(stack);  
+	  	        break;
+		
+		 case 3:pop1(stack);
+		        display(stack);
+				break;	
+				
+	     case 4:pop2(stack);
+		        display(stack);
+				break;	
+		 case 5:printf(" thank you  .press any key");
+		        break;
+	     default:printf(" invalid choice");
+		         break;							     
+	  }
+	  
+    }
+    while(ch>=1&&ch<=4);
+}
